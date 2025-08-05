@@ -49,7 +49,7 @@
                             <td>{{ $k->harga_beli }}</td>
                             <td>
                                 @empty($k->foto)
-                                <img src="{{url('image/nophoto.jpg')}}"
+                                <img src="{{url('images/nophoto.jpeg')}}"
                                     alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
                                 @else
                                 <img src="{{url('image')}}/{{$k->foto}}"
