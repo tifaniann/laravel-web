@@ -7,5 +7,5 @@ use App\Http\Controllers\ProdukController;
 //     return view('produk.index');
 // });
 
-Route::get('/produk', [ProdukController::class, 'produk'])->name('produk.index');
-Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+Route::get('/produk', [ProdukController::class, 'index'])->name('index.index');
+Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('index.edit');
