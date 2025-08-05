@@ -46,7 +46,7 @@
                         @foreach ( $produkList as $k )
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $k->nama }}</td>
+                            <td>{{ $k->nama_produk }}</td>
                             <td>{{ $k->jenis }}</td>
                             <td>{{ $k->harga_jual }}</td>
                             <td>{{ $k->harga_beli }}</td>
@@ -65,7 +65,7 @@
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$k->id}}">
                                     hapus
                                 </button>
-                             </td>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
