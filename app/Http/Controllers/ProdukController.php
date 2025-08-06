@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProdukModel;
+use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
@@ -38,7 +39,49 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $submitAction = $request->input('submit_action'); //baca attribut "name" dari btn
+        // melakukan validasi data
+        $request->validate([
+            'nama' => 'required|max:45',
+            'jenis' => 'required|max:45',
+            'harga_jual' => 'required|numeric',
+            'harga_beli' => 'required|numeric',
+            'deskripsi' => 'nullable|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ],
+        [
+            'nama_produk.required' => 'Nama wajib diisi',
+            'nama_produk.max' => 'Nama maksimal 45 karakter',
+            'jenis.required' => 'jenis wajib diisi',
+            'jenis.max' => 'jenis maksimal 45 karakter',
+            'foto.max' => 'Foto maksimal 2 MB',
+            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
+            'foto.image' => 'File harus berbentuk image'
+        ]);
+        
+        //jika file foto ada yang terupload
+        if(!empty($request->foto)){
+            //maka proses berikut yang dijalankan
+            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
+            //setelah tau fotonya sudah masuk maka tempatkan ke public
+            $request->foto->move(public_path('images'), $fileName);
+        } else {
+            $fileName = 'nophoto.jpeg';
+        }
+        
+        //tambah data produk
+        if ($submitAction === 'simpan') { // jika tombol dengan attribut 'value' ditekan
+            DB::table('produk_models')->insert([
+                'nama_produk'=>$request->nama,
+                'jenis'=>$request->jenis,
+                'harga_jual'=>$request->harga_jual,
+                'harga_beli'=>$request->harga_beli,
+                'deskripsi_produk' => $request->deskripsi,
+                'foto'=>$fileName,
+            ]);
+            
+            return redirect()->route('index.index')->with('success', 'Produk berhasil disimpan');
+        }
     }
 
     /**

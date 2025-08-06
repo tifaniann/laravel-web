@@ -51,13 +51,17 @@
                             <td>{{ $k->harga_jual }}</td>
                             <td>{{ $k->harga_beli }}</td>
                             <td>
-                                @empty($k->foto)
-                                <img src="{{url('images/nophoto.jpeg')}}"
-                                    alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+                                @if (empty($k->foto) || $k->foto == 'nophoto.jpeg')
+                                    <img src="{{ asset('images/nophoto.jpeg') }}"
+                                        alt="no-image"
+                                        class="rounded"
+                                        style="width: 100%; max-width: 100px; height: auto;">
                                 @else
-                                <img src="{{url('image')}}/{{$k->foto}}"
-                                    alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
-                                @endempty
+                                    <img src="{{ asset('images/' . $k->foto) }}"
+                                        alt="product-image"
+                                        class="rounded"
+                                        style="width: 100%; max-width: 100px; height: auto;">
+                                @endif
                             </td>
                             <td>
                                 <a href="" class="btn btn-sm btn-secondary">show</a>
