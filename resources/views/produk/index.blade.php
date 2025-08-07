@@ -20,61 +20,60 @@
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Jenis</th>
-                            <th>Harga Jual</th>
-                            <th>Harga Beli</th>
-                            <th>Foto</th>
-                            <th width="280px">Action</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Jenis</th>
-                            <th>Harga Jual</th>
-                            <th>Harga Beli</th>
-                            <th>Foto</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        @foreach ( $produkList as $k )
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $k->nama_produk }}</td>
-                            <td>{{ $k->jenis }}</td>
-                            <td>{{ $k->harga_jual }}</td>
-                            <td>{{ $k->harga_beli }}</td>
-                            <td>
-                                @if (empty($k->foto) || $k->foto == 'nophoto.jpeg')
-                                    <img src="{{ asset('images/nophoto.jpeg') }}"
-                                        alt="no-image"
-                                        class="rounded"
-                                        style="width: 100%; max-width: 100px; height: auto;">
-                                @else
-                                    <img src="{{ asset('images/' . $k->foto) }}"
-                                        alt="product-image"
-                                        class="rounded"
-                                        style="width: 100%; max-width: 100px; height: auto;">
-                                @endif
-                            </td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-secondary">show</a>
-                                <a href="{{ route('index.edit', $k->id) }}" class="btn btn-sm btn-warning">edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$k->id}}">
-                                    hapus
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Jenis</th>
+                        <th>Harga Jual</th>
+                        <th>Harga Beli</th>
+                        <th>Foto</th>
+                        <th width="280px">Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Jenis</th>
+                        <th>Harga Jual</th>
+                        <th>Harga Beli</th>
+                        <th>Foto</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach ( $produkList as $k )
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $k->nama_produk }}</td>
+                        <td>{{ $k->jenis }}</td>
+                        <td>{{ $k->harga_jual }}</td>
+                        <td>{{ $k->harga_beli }}</td>
+                        <td>
+                            @if (empty($k->foto) || $k->foto == 'nophoto.jpeg')
+                                <img src="{{ asset('images/nophoto.jpeg') }}"
+                                    alt="no-image"
+                                    class="rounded"
+                                    style="width: 100%; max-width: 100px; height: auto;">
+                            @else
+                                <img src="{{ asset('images/' . $k->foto) }}"
+                                    alt="product-image"
+                                    class="rounded"
+                                    style="width: 100%; max-width: 100px; height: auto;">
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('index.index', $k->id) }}" class="btn btn-sm btn-secondary">show</a>
+                            <a href="{{ route('index.edit', $k->id) }}" class="btn btn-sm btn-warning">edit</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{$k->id}}">
+                                hapus
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

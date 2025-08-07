@@ -39,7 +39,7 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $submitAction = $request->input('submit_action'); //baca attribut "name" dari btn
+        $submitAction = $request->input('simpan_produk'); //baca attribut "name" dari btn
         // melakukan validasi data
         $request->validate([
             'nama' => 'required|max:45',
@@ -50,8 +50,8 @@ class ProdukController extends Controller
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ],
         [
-            'nama_produk.required' => 'Nama wajib diisi',
-            'nama_produk.max' => 'Nama maksimal 45 karakter',
+            'nama.required' => 'Nama wajib diisi',
+            'nama.max' => 'Nama maksimal 45 karakter',
             'jenis.required' => 'jenis wajib diisi',
             'jenis.max' => 'jenis maksimal 45 karakter',
             'foto.max' => 'Foto maksimal 2 MB',
@@ -78,9 +78,11 @@ class ProdukController extends Controller
                 'harga_beli'=>$request->harga_beli,
                 'deskripsi_produk' => $request->deskripsi,
                 'foto'=>$fileName,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
             
-            return redirect()->route('index.index')->with('success', 'Produk berhasil disimpan');
+            return redirect()->route('index.index');
         }
     }
 
@@ -97,8 +99,8 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        // $produkList = ProdukModel::all();
-        // return view('index.index', compact('produkList'));
+        $produk = ProdukModel::findOrFail($id); // atau sesuai modelmu
+        return view('produk.edit', compact('produk'));
     }
 
     /**
