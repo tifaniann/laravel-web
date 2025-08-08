@@ -50,7 +50,10 @@
                 </div>
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi:</label>
-                    <textarea class="form-control" id="deskripsi" name="deskripsi">{{ $produk-> id }}</textarea>
+                    <textarea class="form-control @error('deskripsi_produk') is-invalid @enderror" id="deskripsi" name="deskripsi">{{ $produk-> deskripsi_produk }}</textarea>
+                    @error('deskripsi_produk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="foto">Foto Produk:</label>

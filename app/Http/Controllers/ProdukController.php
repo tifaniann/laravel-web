@@ -167,7 +167,11 @@ class ProdukController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = ProdukModel::findOrFail($id); 
+        $post->delete();
+    
+        return redirect()->route('index.index')
+                ->with('success','Data berhasil di hapus' );
     }
 
 }
