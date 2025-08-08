@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProdukModel extends Model
 {
     use HasFactory; //untuk membuat data dummy/ database seeding
-    // protected $table = 'nama_tabel'; 'opsional jika nama tabel tidak sesuai dengan nama model'
+    // protected $table = 'nama_tabel'; //opsional jika nama tabel tidak sesuai dengan nama model'
+    //best practicenya nama model = nama table
     protected $fillable = [ //kolom yang bisa diisi di form
         'nama_produk',
         'deskripsi_produk',

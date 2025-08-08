@@ -27,6 +27,7 @@
                         <th>Jenis</th>
                         <th>Harga Jual</th>
                         <th>Harga Beli</th>
+                        <th>Deskripsi</th>
                         <th>Foto</th>
                         <th width="280px">Action</th>
                     </tr>
@@ -38,6 +39,7 @@
                         <th>Jenis</th>
                         <th>Harga Jual</th>
                         <th>Harga Beli</th>
+                        <th>Deskripsi</th>
                         <th>Foto</th>
                         <th>Action</th>
                     </tr>
@@ -50,6 +52,7 @@
                         <td>{{ $k->jenis }}</td>
                         <td>{{ $k->harga_jual }}</td>
                         <td>{{ $k->harga_beli }}</td>
+                        <td>{{ $k->deskripsi_produk }}</td>
                         <td>
                             @if (empty($k->foto) || $k->foto == 'nophoto.jpeg')
                                 <img src="{{ asset('images/nophoto.jpeg') }}"
