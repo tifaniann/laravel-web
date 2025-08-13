@@ -18,6 +18,7 @@
         <div class = "card-header">
             <a href="{{ route('index.create') }}" class="btn btn-sm btn-primary">Tambah Data</a>
         </div>
+        
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>

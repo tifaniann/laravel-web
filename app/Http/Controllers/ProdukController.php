@@ -174,4 +174,9 @@ class ProdukController extends Controller
                 ->with('success','Data berhasil di hapus' );
     }
 
+    public function test() {
+        return view('produk.test-file'); // pastikan test-file.blade.php ada di resources/views
+    }
+
+
 }
