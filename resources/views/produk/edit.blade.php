@@ -36,14 +36,14 @@
                 </div>
                 <div class="form-group">
                     <label for="harga_jual">Harga Jual:</label>
-                    <input type="text" class="form-control @error('harga_jual') is-invalid @enderror" id="harga_jual" name="harga_jual" value="{{ $produk-> harga_jual }}">
+                    <input type="number" class="form-control @error('harga_jual') is-invalid @enderror" id="harga_jual" name="harga_jual" value="{{ $produk-> harga_jual }}">
                     @error('harga_jual')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="harga_beli">Harga Beli:</label>
-                    <input type="text" class="form-control @error('harga_beli') is-invalid @enderror" id="harga_beli" name="harga_beli" value="{{ $produk-> harga_beli }}">
+                    <input type="number" class="form-control @error('harga_beli') is-invalid @enderror" id="harga_beli" name="harga_beli" value="{{ $produk-> harga_beli }}">
                     @error('harga_beli')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
