@@ -29,7 +29,7 @@ class PenggunaSeeder extends Seeder
             [
                 'username' => 'tifani123',
                 'email' => 'tifani123@gmail.com',
-                'password' => 'admin123',
+                'password' => Hash::make('admin123'),
                 'remember_token' => Str::random(10),     // token acak
                 'email_verified_at' => now(),            
                 'created_at' => now(),

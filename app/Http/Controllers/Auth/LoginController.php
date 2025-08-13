@@ -24,7 +24,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/produk'); // arahkan ke halaman produk
+            return redirect()->intended(route('index.index')); // arahkan ke halaman produk
         }
 
         return back()->withErrors([
